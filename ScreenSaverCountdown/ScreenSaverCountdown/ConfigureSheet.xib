@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ScreenSaverCountdownView">
+            <connections>
+                <outlet property="configSheet" destination="eRy-PD-IMN" id="OF5-pL-99H"/>
+                <outlet property="countdownInput" destination="9Io-oN-iIQ" id="Ymp-6a-5ZG"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" id="eRy-PD-IMN">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="140" y="176" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="944"/>
+            <view key="contentView" id="cfQ-gV-Eld">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qyP-WZ-rOh">
+                        <rect key="frame" x="201" y="59" width="79" height="32"/>
+                        <buttonCell key="cell" type="push" title="Lets go" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hw4-Vx-LCa">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="closeConfigureSheet:" target="-2" id="4hQ-J1-0KV"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7jl-mR-NaT">
+                        <rect key="frame" x="101" y="209" width="278" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Please input your countdown time in seconds" id="sRa-bO-6wl">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Io-oN-iIQ">
+                        <rect key="frame" x="182" y="133" width="116" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="O39-y1-fbQ"/>
+                            <constraint firstAttribute="width" constant="116" id="Xcx-Yr-c1t"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Rzq-ml-yaT">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qyP-WZ-rOh" firstAttribute="centerX" secondItem="cfQ-gV-Eld" secondAttribute="centerX" id="6A7-ND-ePu"/>
+                    <constraint firstItem="7jl-mR-NaT" firstAttribute="centerX" secondItem="qyP-WZ-rOh" secondAttribute="centerX" id="9Ei-X8-igl"/>
+                    <constraint firstItem="9Io-oN-iIQ" firstAttribute="centerX" secondItem="7jl-mR-NaT" secondAttribute="centerX" id="KCy-WJ-D9O"/>
+                    <constraint firstItem="7jl-mR-NaT" firstAttribute="top" secondItem="cfQ-gV-Eld" secondAttribute="top" constant="45" id="dVx-5S-Pfk"/>
+                    <constraint firstAttribute="bottom" secondItem="qyP-WZ-rOh" secondAttribute="bottom" constant="66" id="qLM-t7-NEg"/>
+                    <constraint firstItem="9Io-oN-iIQ" firstAttribute="top" secondItem="7jl-mR-NaT" secondAttribute="bottom" constant="26" id="sTI-57-gWy"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="-439" y="129"/>
+        </window>
+    </objects>
+</document>

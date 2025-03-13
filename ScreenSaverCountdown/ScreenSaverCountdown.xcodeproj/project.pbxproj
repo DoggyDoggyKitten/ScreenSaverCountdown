@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		9F8C9E832D670A2A0058D1B0 /* ScreenSaverCountdownView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8C9E822D670A2A0058D1B0 /* ScreenSaverCountdownView.h */; };
 		9F8C9E852D670A2A0058D1B0 /* ScreenSaverCountdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C9E842D670A2A0058D1B0 /* ScreenSaverCountdownView.m */; };
+		9F8C9E8C2D828C4D0058D1B0 /* ConfigureSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C9E8B2D828C4D0058D1B0 /* ConfigureSheet.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9F8C9E7F2D670A2A0058D1B0 /* ScreenSaverCountdown.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScreenSaverCountdown.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8C9E822D670A2A0058D1B0 /* ScreenSaverCountdownView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenSaverCountdownView.h; sourceTree = "<group>"; };
 		9F8C9E842D670A2A0058D1B0 /* ScreenSaverCountdownView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenSaverCountdownView.m; sourceTree = "<group>"; };
+		9F8C9E8B2D828C4D0058D1B0 /* ConfigureSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigureSheet.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 			children = (
 				9F8C9E822D670A2A0058D1B0 /* ScreenSaverCountdownView.h */,
 				9F8C9E842D670A2A0058D1B0 /* ScreenSaverCountdownView.m */,
+				9F8C9E8B2D828C4D0058D1B0 /* ConfigureSheet.xib */,
 			);
 			path = ScreenSaverCountdown;
 			sourceTree = "<group>";
@@ -122,6 +125,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F8C9E8C2D828C4D0058D1B0 /* ConfigureSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

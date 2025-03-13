@@ -2,6 +2,9 @@
 
 @implementation ScreenSaverCountdownView {
     NSInteger countdown;
+    NSInteger initialCountdown;
+    IBOutlet NSWindow *configSheet; 
+    IBOutlet NSTextField *countdownInput;
 }
 
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
@@ -9,9 +12,41 @@
     self = [super initWithFrame:frame isPreview:isPreview];
     if (self) {
         [self setAnimationTimeInterval:1]; // 1 second per frame.
-        countdown = 60;
+
+        ScreenSaverDefaults *defaults = [ScreenSaverDefaults defaultsForModuleWithName:@"ScreenSaverCountdown"];
+        initialCountdown = [defaults integerForKey:@"initialCountdown"];
+        if (initialCountdown == 0) {
+            initialCountdown = 60;
+        }
+        countdown = initialCountdown;
     }
     return self;
+}
+
+- (BOOL)hasConfigureSheet
+{
+    return YES;
+}
+
+- (NSWindow*)configureSheet
+{
+    if (!configSheet) {
+        [[NSBundle bundleForClass:[self class]] loadNibNamed:@"ConfigureSheet" owner:self topLevelObjects:nil];
+        [countdownInput setIntegerValue:initialCountdown];
+    }
+    return configSheet;
+}
+
+- (IBAction)closeConfigureSheet:(id)sender
+{
+    initialCountdown = [countdownInput integerValue];
+    countdown = initialCountdown;
+    
+    ScreenSaverDefaults *defaults = [ScreenSaverDefaults defaultsForModuleWithName:@"ScreenSaverCountdown"];
+    [defaults setInteger:initialCountdown forKey:@"initialCountdown"];
+    [defaults synchronize];
+    
+    [[NSApplication sharedApplication] endSheet:configSheet];
 }
 
 - (void)drawRect:(NSRect)rect {
@@ -42,7 +77,7 @@
      if (countdown > 0) {
         countdown--;
     } else {
-        countdown = 60; // reset the timer
+        countdown = initialCountdown;
     }
     [self setNeedsDisplay:YES];
 }
