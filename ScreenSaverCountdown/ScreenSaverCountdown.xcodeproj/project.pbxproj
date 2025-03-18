@@ -10,6 +10,7 @@
 		9F8C9E832D670A2A0058D1B0 /* ScreenSaverCountdownView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F8C9E822D670A2A0058D1B0 /* ScreenSaverCountdownView.h */; };
 		9F8C9E852D670A2A0058D1B0 /* ScreenSaverCountdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C9E842D670A2A0058D1B0 /* ScreenSaverCountdownView.m */; };
 		9F8C9E8C2D828C4D0058D1B0 /* ConfigureSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C9E8B2D828C4D0058D1B0 /* ConfigureSheet.xib */; };
+		9F8C9E8E2D891EE30058D1B0 /* running_cat.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C9E8D2D891EE30058D1B0 /* running_cat.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,6 +18,7 @@
 		9F8C9E822D670A2A0058D1B0 /* ScreenSaverCountdownView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenSaverCountdownView.h; sourceTree = "<group>"; };
 		9F8C9E842D670A2A0058D1B0 /* ScreenSaverCountdownView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenSaverCountdownView.m; sourceTree = "<group>"; };
 		9F8C9E8B2D828C4D0058D1B0 /* ConfigureSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigureSheet.xib; sourceTree = "<group>"; };
+		9F8C9E8D2D891EE30058D1B0 /* running_cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = running_cat.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 			children = (
 				9F8C9E822D670A2A0058D1B0 /* ScreenSaverCountdownView.h */,
 				9F8C9E842D670A2A0058D1B0 /* ScreenSaverCountdownView.m */,
+				9F8C9E8D2D891EE30058D1B0 /* running_cat.png */,
 				9F8C9E8B2D828C4D0058D1B0 /* ConfigureSheet.xib */,
 			);
 			path = ScreenSaverCountdown;
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F8C9E8E2D891EE30058D1B0 /* running_cat.png in Resources */,
 				9F8C9E8C2D828C4D0058D1B0 /* ConfigureSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,9 +259,11 @@
 		9F8C9E892D670A2A0058D1B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3S26T578K3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSPrincipalClass = ScreenSaverCountdownView;
@@ -265,6 +271,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = qt.uselessapp.ScreenSaverCountdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				WRAPPER_EXTENSION = saver;
 			};
@@ -273,9 +280,11 @@
 		9F8C9E8A2D670A2A0058D1B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3S26T578K3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSPrincipalClass = ScreenSaverCountdownView;
@@ -283,6 +292,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = qt.uselessapp.ScreenSaverCountdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				WRAPPER_EXTENSION = saver;
 			};
