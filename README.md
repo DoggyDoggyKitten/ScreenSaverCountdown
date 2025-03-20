@@ -1,11 +1,12 @@
 ### I want to use it when I am not at my desk (aka finding snacks in the MK)
 
-it looks like this: but looks a lot more cuter : D
+Download and open ScreenSavorCountdown.savor to use or build yourself
 
+![Demo](/images/Demo.jpg)
 
-           | -------------------------|
-     o   / | I will be back in 25 mins|
-    /|\ /  |------------------------- |
-     |
-    / \
+#### Pre-selected options to quickly choose from
+![config2](/images/config2.png)
+
+#### Update custom text
+![config1](/images/config1.png)
 
