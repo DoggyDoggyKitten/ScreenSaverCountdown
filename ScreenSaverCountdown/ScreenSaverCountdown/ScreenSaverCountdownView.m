@@ -132,7 +132,7 @@
     }
 
     // Text styles and positions
-    CGFloat fontSize = rect.size.height * 0.1;  // 10% of screen height
+    CGFloat fontSize = rect.size.height * 0.07; 
     [[NSColor whiteColor] setFill];
     NSFont *font = [NSFont fontWithName:@"Helvetica" size:fontSize];
     NSDictionary *attrs = @{
@@ -154,14 +154,22 @@
     NSSize textSize = [timeString sizeWithAttributes:attrs];
     
     // Combine message with time
-    NSString *text = [NSString stringWithFormat:@"%@ (%@)", currentMessage, timeString];
+    NSString *text = [NSString stringWithFormat:@"%@ : %@", currentMessage, timeString];
 
-    NSPoint textPoint = NSMakePoint(
-        20,
-        rect.size.height - textSize.height - 20
+    // Line style to wrap into two lines
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];    
+    NSMutableDictionary *mutableAttrs = [attrs mutableCopy];
+    [mutableAttrs setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
+    
+    NSRect textRect = NSMakeRect(
+        20,  // Left margin
+        rect.size.height - fontSize * 5,  // Top position
+        rect.size.width - 40,  // Width minus margins
+        fontSize * 3  // Height for multiple lines
     );
     
-    [text drawAtPoint:textPoint withAttributes:attrs];
+    [text drawInRect:textRect withAttributes:mutableAttrs];
 }
 
 - (void)animateOneFrame {
