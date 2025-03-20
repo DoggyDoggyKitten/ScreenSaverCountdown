@@ -3,9 +3,15 @@
 @implementation ScreenSaverCountdownView {
     NSInteger countdown; // Total seconds
     NSInteger initialCountdown; // Minutes * 60
+
+    // Preview config related
     IBOutlet NSWindow *configSheet; 
     IBOutlet NSTextField *countdownInput;
+    IBOutlet NSPopUpButton *messageSelect;
+    IBOutlet NSTextField *customMessageInput;
+
     NSImage *backgroundImage;
+    NSString *currentMessage;
 }
 
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview {
@@ -20,8 +26,13 @@
         // Load minutes and convert to seconds
         ScreenSaverDefaults *defaults = [ScreenSaverDefaults defaultsForModuleWithName:@"ScreenSaverCountdown"];
         initialCountdown = [defaults integerForKey:@"initialCountdown"] * 60;
+        currentMessage = [defaults stringForKey:@"currentMessage"];
+
         if (initialCountdown == 0) {
             initialCountdown = 60 * 60; // Default to 60 mins
+        }
+        if (!currentMessage) {
+            currentMessage = @"I will be back in ";
         }
         countdown = initialCountdown;
     }
@@ -35,9 +46,48 @@
 - (NSWindow*)configureSheet {
     if (!configSheet) {
         [[NSBundle bundleForClass:[self class]] loadNibNamed:@"ConfigureSheet" owner:self topLevelObjects:nil];
-        [countdownInput setIntegerValue:initialCountdown / 60]; // Show minutes in config
+
+        // Setup popup button
+        [messageSelect removeAllItems];
+        [messageSelect addItemsWithTitles:@[
+            @"I will be back in",
+            @"Venturing into the MK for a snack quest. Back in ",
+            @"Heading to the gym to make today awesome! Back in ",
+            @"Following my nose to yummy-land! Back in ",
+            @"Refreshing in the restroom Back in ",
+            @"Custom message..."
+        ]];
+
+        // Add target action connection
+        [messageSelect setTarget:self];
+        [messageSelect setAction:@selector(messageSelectionChanged:)];
+
+        // Show minutes in config
+        [countdownInput setIntegerValue:initialCountdown / 60]; 
+
+        // Configure for saved message
+        NSInteger index = [messageSelect indexOfItemWithTitle:currentMessage];
+        if (index != NSNotFound) {
+            [messageSelect selectItemAtIndex:index];
+        } else {
+            // If saved message isn't in preset list, select "Custom message..."
+            [messageSelect selectItemWithTitle:@"Custom message..."];
+            [customMessageInput setStringValue:currentMessage];
+        }
+        
+        // Setup initial custom message field visibility
+        [self updateCustomMessageVisibility:nil];
     }
     return configSheet;
+}
+
+- (IBAction)messageSelectionChanged:(id)sender {
+    [self updateCustomMessageVisibility:sender];
+}
+
+- (void)updateCustomMessageVisibility:(id)sender {
+    BOOL isCustom = [[messageSelect selectedItem].title isEqualToString:@"Custom message..."];
+    [customMessageInput setHidden:!isCustom];
 }
 
 - (IBAction)closeConfigureSheet:(id)sender {
@@ -45,8 +95,16 @@
     initialCountdown = [countdownInput integerValue] * 60;
     countdown = initialCountdown;
     
+    // Save the message
+    if ([[messageSelect selectedItem].title isEqualToString:@"Custom message..."]) {
+        currentMessage = [customMessageInput stringValue];
+    } else {
+        currentMessage = [messageSelect selectedItem].title;
+    }
+
     ScreenSaverDefaults *defaults = [ScreenSaverDefaults defaultsForModuleWithName:@"ScreenSaverCountdown"];
     [defaults setInteger:initialCountdown / 60 forKey:@"initialCountdown"];
+    [defaults setObject:currentMessage forKey:@"currentMessage"];
     [defaults synchronize];
     
     [[NSApplication sharedApplication] endSheet:configSheet];
@@ -92,9 +150,12 @@
     // Format time as minutes:seconds
     NSInteger minutes = countdown / 60;
     NSInteger seconds = countdown % 60;
-    NSString *text = [NSString stringWithFormat:@"I will be back in %ld:%02ld", minutes, seconds];
-    NSSize textSize = [text sizeWithAttributes:attrs];
+    NSString *timeString = [NSString stringWithFormat:@"%ld:%02ld", minutes, seconds];
+    NSSize textSize = [timeString sizeWithAttributes:attrs];
     
+    // Combine message with time
+    NSString *text = [NSString stringWithFormat:@"%@ (%@)", currentMessage, timeString];
+
     NSPoint textPoint = NSMakePoint(
         20,
         rect.size.height - textSize.height - 20
